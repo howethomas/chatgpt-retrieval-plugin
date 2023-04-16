@@ -7,7 +7,18 @@ class Source(str, Enum):
     email = "email"
     file = "file"
     chat = "chat"
+    call = 'call'
 
+class AnalysisType(str, Enum):
+    sentiment = "sentiment"
+    topic = "topic"
+    entity = "entity"
+    intent = "intent"
+    summary = "summary"
+    keyword = "keyword"
+    transcript = "transcript"
+    promise = "promise"
+    raw = "raw"
 
 class DocumentMetadata(BaseModel):
     source: Optional[Source] = None
@@ -15,6 +26,13 @@ class DocumentMetadata(BaseModel):
     url: Optional[str] = None
     created_at: Optional[str] = None
     author: Optional[str] = None
+    recording_url: Optional[str] = None
+    conversation_id: Optional[str] = None
+    agent_email: Optional[str] = None
+    customer_email: Optional[str] = None
+    customer_telephone: Optional[str] = None
+    store_name: Optional[str] = None
+    analysis_type: Optional[AnalysisType] = None
 
 
 class DocumentChunkMetadata(DocumentMetadata):

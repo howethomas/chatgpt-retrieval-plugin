@@ -102,6 +102,7 @@ async def upsert(
 @app.post("/query", response_model=QueryResponse)
 async def query_main(request: QueryRequest = Body(...)):
     try:
+        print("request.queries", request.queries)
         results = await datastore.query(
             request.queries,
         )
